@@ -125,6 +125,18 @@
   Source of tactical positions: from the book <em>Sharpen Your Tactics!</em><br>
   Grandmaster Anatoly Lein & Boris Archangelsky
 </div>
+  
+  <button id="openPdfBtn">Solutions PDF</button>
+
+<div id="pdfModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:9999; padding:40px;">
+  <div style="background:white; width:90%; height:90%; margin:0 auto; position:relative; padding:10px; border-radius:6px;">
+    <button id="closePdfBtn" style="position:absolute; top:6px; right:6px;">X</button>
+
+    <iframe src="data/Sharpen_Your_Tactics_Solutions.pdf" style="width:100%; height:100%; border:none;"></iframe>
+
+  </div>
+</div>
+
   <br>
   <button id="openFenBuilderBtn">Use the FEN Builder</button>
   <div id="topBar"></div>
@@ -313,10 +325,17 @@ document.getElementById("upload").addEventListener("change", async (e) => {
 
   const fenBtn=document.getElementById('openFenBuilderBtn'); 
     if(fenBtn){ fenBtn.addEventListener('click', ()=> window.open('https://lichess.org/editor','_blank')); }
-  
+
+    document.getElementById('openPdfBtn').onclick = () =>
+  document.getElementById('pdfModal').style.display = 'block';
+
+document.getElementById('closePdfBtn').onclick = () =>
+  document.getElementById('pdfModal').style.display = 'none';
+    
   </script>
 </body>
 </html>
+
 
 
 
