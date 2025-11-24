@@ -74,27 +74,7 @@
 <body>
   <h1>Tactics Flashcards</h1>
 
-  <div id="topBar">
-
-    <!--
-    <label>
-      Filter:
-      <select id="filterSelect">
-        <option value="all">All</option>
-        <option value="white">White to move</option>
-        <option value="black">Black to move</option>
-        <option value="favorites">Favorites</option>
-      </select>
-    </label>
-    -->
-
-    <!-- <button id="btnOrdered">Order as in the book</button>
-    <button id="btnRandom">Random</button>
-
-    <!-- <button id="btnExport">Export JSON</button> -->
-    <!-- <button id="btnAnalyze">Analyze with Stockfish</button> -->
-
-  </div>
+  <div id="topBar"></div>
 
   <div id="card">
     <div id="meta"></div>
@@ -210,13 +190,13 @@
       favInd.classList.toggle("active", card.favorite);
       favInd.textContent = card.favorite ? "★" : "☆";
 
-    //  document.getElementById("stats").textContent =
-    //    "Solved: " + card.correct + " | Missed: " + card.wrong;
-    //  } 
+      // document.getElementById("stats").textContent =
+      //   "Solved: " + card.correct + " | Missed: " + card.wrong;
+    }
 
-// document.getElementById("btnShow").addEventListener("click", () => {
-//   document.getElementById("solution").style.display = "block";
-// });
+    // document.getElementById("btnShow").addEventListener("click", () => {
+    //   document.getElementById("solution").style.display = "block";
+    // });
 
     document.getElementById("btnNext").addEventListener("click", () => {
       currentIndex = getNextDueCardIndex();
@@ -270,10 +250,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
