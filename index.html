@@ -208,23 +208,23 @@
       showCard(currentIndex);
     });
 
-    document.getElementById("btnCorrect").addEventListener("click", () => {
-      const card = cards[currentIndex];
-      card.correct++;
-      syncCardToProgress(card);
+   // document.getElementById("btnCorrect").addEventListener("click", () => {
+   //   const card = cards[currentIndex];
+   //   card.correct++;
+   //   syncCardToProgress(card);
 
-      currentIndex = getNextDueCardIndex();
+  //    currentIndex = getNextDueCardIndex();
       showCard(currentIndex);
-    });
+  //  });
 
-    document.getElementById("btnWrong").addEventListener("click", () => {
-      const card = cards[currentIndex];
-      card.wrong++;
-      syncCardToProgress(card);
+  //  document.getElementById("btnWrong").addEventListener("click", () => {
+  //    const card = cards[currentIndex];
+  //   card.wrong++;
+  //    syncCardToProgress(card);
 
-      currentIndex = getNextDueCardIndex();
-      showCard(currentIndex);
-    });
+  //    currentIndex = getNextDueCardIndex();
+  //    showCard(currentIndex);
+  //  });
 
     document.getElementById("btnFavorite").addEventListener("click", () => {
       const card = cards[currentIndex];
@@ -233,17 +233,17 @@
       showCard(currentIndex);
     });
 
-    document.getElementById("btnRandom").addEventListener("click", () => {
-      mode = "random";
-      currentIndex = getNextDueCardIndex();
-      showCard(currentIndex);
-    });
+  //  document.getElementById("btnRandom").addEventListener("click", () => {
+  //   mode = "random";
+  //    currentIndex = getNextDueCardIndex();
+  //    showCard(currentIndex);
+  //  });
 
-    document.getElementById("btnOrdered").addEventListener("click", () => {
-      mode = "ordered";
-      currentIndex = 0;
-      showCard(currentIndex);
-    });
+  //  document.getElementById("btnOrdered").addEventListener("click", () => {
+  //    mode = "ordered";
+  //    currentIndex = 0;
+  //    showCard(currentIndex);
+  //  });
 
    window.addEventListener("load", () => {
   currentIndex = getNextDueCardIndex();
@@ -253,4 +253,5 @@
   </script>
 </body>
 </html>
+
 
