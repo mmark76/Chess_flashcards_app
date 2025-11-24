@@ -36,7 +36,6 @@
       border: 1px solid #ccc;
       margin-top: 8px;
     }
-
     button {
       padding: 6px 14px;
       cursor: pointer;
@@ -64,36 +63,35 @@
       color: gold;
     }
     input[type="file"] {
-  padding: 6px 14px;
-  cursor: pointer;
-  border-radius: 4px;
-  border: 1px solid #777;
-  background: #f4f4f4;
-   }
-
-input[type="file"]:hover {
-  background: #e8e8e8;
-   }
+      padding: 6px 14px;
+      cursor: pointer;
+      border-radius: 4px;
+      border: 1px solid #777;
+      background: #f4f4f4;
+    }
+    input[type="file"]:hover {
+      background: #e8e8e8;
+    }
     
-#controls {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
+    #controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
 
-#top-buttons {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  justify-content: center;
-}
+    #top-buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      justify-content: center;
+    }
 
-#bottom-file {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    #bottom-file {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
   </style>
 </head>
@@ -108,9 +106,6 @@ input[type="file"]:hover {
     <img id="boardImg" src="" alt="Position" />
     <span id="favoriteIndicator">☆</span>
 
-      <!--  <button id="btnShow">Show solution</button> 
-      <button id="btnCorrect">I solved it</button>
-      <button id="btnWrong">I missed it</button> -->
 <div id="controls">
 
   <div id="top-buttons">
@@ -125,7 +120,6 @@ input[type="file"]:hover {
   </div>
 
 </div>
-
 
     <div id="solution" style="display:none;"></div>
     <div id="stats"></div>
@@ -145,8 +139,6 @@ input[type="file"]:hover {
     for (let i = 1; i <= TOTAL; i++) {
       cards.push({
         id: i,
-        bookNumber: i,
-        page: Math.floor((i - 1) / 12) + 1,
         image: `problems/problem_${i}.png`,
         ease: 2.5,
         interval: 1,
@@ -221,73 +213,35 @@ input[type="file"]:hover {
 
       document.getElementById("meta").textContent = "";
       document.getElementById("solution").style.display = "none";
-      document.getElementById("solution").textContent = card.solution || "";
+      document.getElementById("solution").textContent = "";
       
       const favInd = document.getElementById("favoriteIndicator");
       favInd.classList.toggle("active", card.favorite);
       favInd.textContent = card.favorite ? "★" : "☆";
-
-      // document.getElementById("stats").textContent =
-      //   "Solved: " + card.correct + " | Missed: " + card.wrong;
     }
 
-    // document.getElementById("btnShow").addEventListener("click", () => {
-    //   document.getElementById("solution").style.display = "block";
-    // });
-
-    document.getElementById("btnNext").addEventListener("click", () => {
+    document.getElementById("next-btn").addEventListener("click", () => {
       currentIndex = getNextDueCardIndex();
       showCard(currentIndex);
     });
 
-    document.getElementById("btnPrev").addEventListener("click", () => {
+    document.getElementById("previous-btn").addEventListener("click", () => {
       currentIndex = getNextDueCardIndex();
       showCard(currentIndex);
     });
 
-   // document.getElementById("btnCorrect").addEventListener("click", () => {
-   //   const card = cards[currentIndex];
-   //   card.correct++;
-   //   syncCardToProgress(card);
-
-  //    currentIndex = getNextDueCardIndex();
-  //    showCard(currentIndex);
-  //  });
-
-  //  document.getElementById("btnWrong").addEventListener("click", () => {
-  //    const card = cards[currentIndex];
-  //   card.wrong++;
-  //    syncCardToProgress(card);
-
-  //    currentIndex = getNextDueCardIndex();
-  //    showCard(currentIndex);
-  //  });
-
-    document.getElementById("btnFavorite").addEventListener("click", () => {
+    document.getElementById("favorite-btn").addEventListener("click", () => {
       const card = cards[currentIndex];
       card.favorite = !card.favorite;
       syncCardToProgress(card);
       showCard(currentIndex);
     });
 
-  //  document.getElementById("btnRandom").addEventListener("click", () => {
-  //   mode = "random";
-  //    currentIndex = getNextDueCardIndex();
-  //    showCard(currentIndex);
-  //  });
+    window.addEventListener("load", () => {
+      currentIndex = getNextDueCardIndex();
+      showCard(currentIndex);
+    });
 
-  //  document.getElementById("btnOrdered").addEventListener("click", () => {
-  //    mode = "ordered";
-  //    currentIndex = 0;
-  //    showCard(currentIndex);
-  //  });
-
-   window.addEventListener("load", () => {
-  currentIndex = getNextDueCardIndex();
-  showCard(currentIndex);
-});
-
-    // Load custom images
 const customKey = "sharpen_custom_images";
 let customImages = JSON.parse(localStorage.getItem(customKey)) || [];
 
@@ -295,7 +249,7 @@ function saveCustomImages() {
   localStorage.setItem(customKey, JSON.stringify(customImages));
 }
 
-document.getElementById("uploadInput").addEventListener("change", async (e) => {
+document.getElementById("upload").addEventListener("change", async (e) => {
   const files = Array.from(e.target.files);
 
   for (const file of files) {
@@ -303,8 +257,6 @@ document.getElementById("uploadInput").addEventListener("change", async (e) => {
 
     const newCard = {
       id: "u_" + Date.now() + "_" + Math.random().toString(36).slice(2),
-      bookNumber: "custom",
-      page: "-",
       image: url,
       ease: 2.5,
       interval: 1,
@@ -327,12 +279,3 @@ document.getElementById("uploadInput").addEventListener("change", async (e) => {
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
