@@ -80,9 +80,30 @@
 input[type="file"]:hover {
   background: #e8e8e8;
    }
+    
+#controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+#top-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+}
+
+#bottom-file {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
   </style>
 </head>
+  
 <body>
   <h1>Tactics Flashcards</h1>
 
@@ -93,16 +114,24 @@ input[type="file"]:hover {
     <img id="boardImg" src="" alt="Position" />
     <span id="favoriteIndicator">☆</span>
 
-    <div class="controls">
       <!--  <button id="btnShow">Show solution</button> 
       <button id="btnCorrect">I solved it</button>
       <button id="btnWrong">I missed it</button> -->
-      <button id="btnPrev">⟵ Previous</button>
-      <button id="btnNext">Next ⟶</button>
-      <button id="btnFavorite">★ Favorite</button>
-      <input id="uploadInput" type="file" accept="image/*" multiple />
-      <span style="font-size:0.85em; color:#555;">(Upload only images and screenshots)</span>
-    </div>
+<div id="controls">
+
+  <div id="top-buttons">
+    <button id="previous-btn">← Previous</button>
+    <button id="next-btn">Next →</button>
+    <button id="favorite-btn">★ Favorite</button>
+  </div>
+
+  <div id="bottom-file">
+    <input type="file" id="upload" multiple accept="image/*">
+    <div>(Upload only images and screenshots)</div>
+  </div>
+
+</div>
+
 
     <div id="solution" style="display:none;"></div>
     <div id="stats"></div>
@@ -304,6 +333,7 @@ document.getElementById("uploadInput").addEventListener("change", async (e) => {
   </script>
 </body>
 </html>
+
 
 
 
