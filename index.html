@@ -12,11 +12,14 @@
       margin: 0 auto;
       padding: 16px;
     }
+
     h1 {
       text-align: center;
     }
+
     #topBar {
       display: flex;
+      flex-direction: row;
       flex-wrap: wrap;
       gap: 8px;
       justify-content: center;
@@ -24,12 +27,16 @@
       margin-bottom: 12px;
       font-size: 0.9em;
     }
+
     #card {
       text-align: center;
       border: 1px solid #ddd;
       padding: 12px;
       border-radius: 6px;
+      max-width: 470px;
+      margin: 0 auto;
     }
+
     #boardImg {
       width: 400px;
       max-width: 100%;
@@ -37,43 +44,63 @@
       border: 1px solid #ccc;
       margin-top: 8px;
     }
-    button {
-      padding: 6px 14px;
+
+    /* Ενιαίο, πιο «μοντέρνο» στυλ για κουμπιά, select και file input */
+    button,
+    input[type="file"],
+    select {
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1px solid #d0d7de;
+      background: linear-gradient(to bottom, #ffffff, #f3f4f6);
       cursor: pointer;
-      border-radius: 4px;
-      border: 1px solid #777;
-      background: #f4f4f4;
+      font-size: 0.9em;
+      font-weight: 500;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+      transition:
+        background 0.15s ease,
+        box-shadow 0.15s ease,
+        transform 0.08s ease,
+        border-color 0.15s ease;
     }
-    button:hover {
-      background: #e8e8e8;
+
+    button:hover,
+    input[type="file"]:hover,
+    select:hover {
+      background: linear-gradient(to bottom, #f9fafb, #e5e7eb);
+      box-shadow: 0 2px 4px rgba(15, 23, 42, 0.16);
+      transform: translateY(-1px);
+      border-color: #9ca3af;
     }
+
+    button:active,
+    input[type="file"]:active,
+    select:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.1);
+    }
+
     #solution {
       margin-top: 10px;
       font-weight: bold;
     }
-    #meta, #stats {
+
+    #meta,
+    #stats {
       margin-top: 6px;
       font-size: 0.9em;
       color: #333;
     }
+
     #favoriteIndicator {
       font-size: 1.2em;
       margin-left: 6px;
     }
+
     #favoriteIndicator.active {
       color: gold;
     }
-    input[type="file"] {
-      padding: 6px 14px;
-      cursor: pointer;
-      border-radius: 4px;
-      border: 1px solid #777;
-      background: #f4f4f4;
-    }
-    input[type="file"]:hover {
-      background: #e8e8e8;
-    }
-    
+
     #controls {
       display: flex;
       flex-direction: column;
@@ -93,33 +120,15 @@
       flex-direction: column;
       align-items: center;
     }
-    
+
     #bottom-file div {
       font-size: 0.8em;
       opacity: 0.8;
       margin-top: 6px;
-   }
-    
-    #card {
-      text-align: center;
-      border: 1px solid #ddd;
-      padding: 12px;
-      border-radius: 6px;
-      max-width: 470px;
-      margin: 0 auto;
-     }
-    
-#topBar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-    
+    }
   </style>
-  
 </head>
-  
+
 <body>
   <h1>Tactics Flashcards</h1>
 
@@ -138,13 +147,13 @@
     <button id="modeBtn">Mode: Random</button>
     <button id="jumpBtn">Go to number #</button>
     <select id="rangeSelect">
-      <option value="">Choose Range</option> 
+      <option value="">Choose Range</option>
       <option value="1-300">1–300</option>
-       <option value="301-600">301–600</option>
-       <option value="601-900">601–900</option>
-       <option value="901-1125">901–1125</option>
-     </select>
-     <button id="openFenBuilderBtn">Use lichess.org FEN Builder</button>
+      <option value="301-600">301–600</option>
+      <option value="601-900">601–900</option>
+      <option value="901-1125">901–1125</option>
+    </select>
+    <button id="openFenBuilderBtn">Use lichess.org FEN Builder</button>
   </div>
   
   <div id="card">
@@ -376,6 +385,7 @@ if(fenBtn){ fenBtn.addEventListener('click', ()=> window.open('https://lichess.o
   </script>
 </body>
 </html>
+
 
 
 
