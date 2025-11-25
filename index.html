@@ -140,6 +140,7 @@
 
   <div id="topBar">
     <button id="modeBtn">Mode: Random</button>
+    <button id="jumpBtn">Go to #</button>
 </div>
   
   <div id="card">
@@ -310,7 +311,12 @@ document.getElementById("modeBtn").addEventListener("click", () => {
       showCard(currentIndex);
     });
 
-
+document.getElementById("jumpBtn").addEventListener("click", () => {
+  const n = parseInt(prompt("Enter card number (1-" + cards.length + "):"));
+  if (!n || n < 1 || n > cards.length) return;
+  currentIndex = n - 1;
+  showCard(currentIndex);
+});
 
 document.getElementById('openPdfBtn').addEventListener('click', () => {
   document.getElementById('pdfModal').style.display = 'block';
@@ -363,6 +369,7 @@ if(fenBtn){ fenBtn.addEventListener('click', ()=> window.open('https://lichess.o
   </script>
 </body>
 </html>
+
 
 
 
