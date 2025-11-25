@@ -118,6 +118,11 @@
       margin: 0 auto;
      }
     
+     #topBar {
+      display: block;
+      margin: 0 auto;
+     }
+    
   </style>
   
 </head>
@@ -140,14 +145,14 @@
     <button id="modeBtn">Mode: Random</button>
     <button id="jumpBtn">Go to number #</button>
     <select id="rangeSelect">
-  <option value="1-300">1–300</option>
-  <option value="301-600">301–600</option>
-  <option value="601-900">601–900</option>
-  <option value="901-1125">901–1125</option>
-</select>
-<br>
+       <option value="1-300">1–300</option>
+       <option value="301-600">301–600</option>
+       <option value="601-900">601–900</option>
+       <option value="901-1125">901–1125</option>
+     </select>
+        <br>
     <button id="openFenBuilderBtn">Use lichess.org FEN Builder</button>
-</div>
+  </div>
   
   <div id="card">
     <div id="meta"></div>
@@ -381,6 +386,7 @@ if(fenBtn){ fenBtn.addEventListener('click', ()=> window.open('https://lichess.o
   </script>
 </body>
 </html>
+
 
 
 
