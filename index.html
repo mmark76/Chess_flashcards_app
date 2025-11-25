@@ -190,11 +190,11 @@
 
 
 <script>
-let TOTAL = parseInt(prompt("How many images are in your 'problems' folder?"));
+let TOTAL = parseInt(prompt("How many images are in your 'problems' folder? For the default library enter 15."));
 if (!Number.isFinite(TOTAL) || TOTAL < 1) TOTAL = 15;
 
 const statusMsg = document.getElementById("statusMsg");
-statusMsg.textContent = "Default images loaded";
+statusMsg.textContent = "Default images (15) are loaded";
 statusMsg.style.color = "green";
 
 const cards = [];
@@ -340,4 +340,5 @@ uploadInput.addEventListener("change", (event) => {
 
 </body>
 </html>
+
 
