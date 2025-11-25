@@ -139,6 +139,13 @@
   <div id="topBar">
     <button id="modeBtn">Mode: Random</button>
     <button id="jumpBtn">Go to number #</button>
+    <select id="rangeSelect">
+  <option value="1-300">1–300</option>
+  <option value="301-600">301–600</option>
+  <option value="601-900">601–900</option>
+  <option value="901-1125">901–1125</option>
+</select>
+<br>
     <button id="openFenBuilderBtn">Use lichess.org FEN Builder</button>
 </div>
   
@@ -324,7 +331,13 @@ document.getElementById('openPdfBtn').addEventListener('click', () => {
 document.getElementById('closePdfBtn').addEventListener('click', () => {
   document.getElementById('pdfModal').style.display = 'none';
 });
-
+    
+document.getElementById("rangeSelect").addEventListener("change", e => {
+  const [a, b] = e.target.value.split("-").map(Number);
+  const r = a + Math.floor(Math.random() * (b - a + 1));
+  currentIndex = r - 1;
+  showCard(currentIndex);
+});
 
 const customKey = "sharpen_custom_images";
 let customImages = JSON.parse(localStorage.getItem(customKey)) || [];
@@ -368,6 +381,7 @@ if(fenBtn){ fenBtn.addEventListener('click', ()=> window.open('https://lichess.o
   </script>
 </body>
 </html>
+
 
 
 
