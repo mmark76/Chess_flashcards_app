@@ -7,6 +7,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
+    
+    @media(max-width:600px){
+  #controls > div {
+    flex-direction: column;
+    gap:10px;
+  }
+  
+  button, select, input[type=file] {
+    width: 100%;
+    text-align:center;
+  }
+
+  #top-center-buttons {
+    flex-direction:column;
+  }
+}
+
     body {
       font-family: Arial, sans-serif;
       max-width: 900px;
@@ -43,10 +60,9 @@
     }
 
     #boardImg {
-      width: 410px;
-      max-width: 100%;
-      border: 1px solid #ccc;
-      margin-top: 10px;
+      width: 100%;
+      max-width: 420px;
+      border:1px solid #ccc;
     }
 
     /* buttons */
@@ -78,7 +94,7 @@
     /* DARK MODE */
     .dark-mode { background:#141414; color:#eee; }
     .dark-mode #card { border-color:#444; }
-    .dark-mode #boardImg { border-color:#555; }
+    .dark-mode #Img { border-color:#555; }
     .dark-mode button,
     .dark-mode select,
     .dark-mode input[type="file"] {
@@ -99,7 +115,7 @@
   <div id="statusMsg" style="text-align:center; margin-bottom:12px; color:green;"></div>
 
   <div style="text-align:center; font-size:0.9em; margin-bottom:15px;">
-    <img src="/data/Sharpen cover.png" style="width:170px; display:block; margin:0 auto 8px;">
+    <img src="/data/Sharpen cover.png" style="width:55%; max-width:230px; display:block; margin:0 auto 8px;">
     Source of tactical positions: from the book <em>Sharpen Your Tactics!</em><br>
     Grandmaster Anatoly Lein & Boris Archangelsky
   </div>
@@ -249,3 +265,4 @@ document.getElementById('openFenBuilderBtn').onclick=()=>{
 
 </body>
 </html>
+
