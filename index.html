@@ -190,7 +190,7 @@
 
 
 <script>
-let TOTAL = parseInt(prompt("How many images are in your 'problems' folder? For the default library enter 15."));
+let TOTAL = parseInt(prompt("How many images are in your folder ? (please name the folder you will have your images 'problems' and name the images 'problem_#' where # is the number of each image). To use default library enter 15."));
 if (!Number.isFinite(TOTAL) || TOTAL < 1) TOTAL = 15;
 
 const statusMsg = document.getElementById("statusMsg");
@@ -340,6 +340,7 @@ uploadInput.addEventListener("change", (event) => {
 
 </body>
 </html>
+
 
 
 
