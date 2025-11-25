@@ -201,7 +201,7 @@
   </div>
 
   <div id="top-center-buttons">
-    <button id="openPdfBtn">Solutions (pdf)</button>
+   <!-- <button id="openPdfBtn">Solutions (pdf)</button> -->
     <button id="openFenBuilderBtn">Use lichess.org FEN Builder</button>
 
     <select id="themeSelect">
@@ -247,7 +247,7 @@
   </div>
 
 
-  <!-- PDF MODAL -->
+  <!-- PDF MODAL 
   <div id="pdfModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:9999; padding:40px;">
     <div style="background:white; width:90%; height:90%; margin:0 auto; position:relative; padding:10px; border-radius:6px;">
       <button id="closePdfBtn" style="position:absolute; top:6px; right:6px; font-size:16px;">X</button>
@@ -255,8 +255,8 @@
       <iframe src="data/Sharpen_Your_Tactics_Solutions.pdf"
               style="width:100%; height:100%; border:none;"></iframe>
 
-    </div>
-  </div>
+    </div> 
+  </div> -->
 
   <script>
 
@@ -393,13 +393,13 @@ document.getElementById("jumpBtn").addEventListener("click", () => {
   showCard(currentIndex);
 });
 
-document.getElementById('openPdfBtn').addEventListener('click', () => {
-  document.getElementById('pdfModal').style.display = 'block';
-});
+// document.getElementById('openPdfBtn').addEventListener('click', () => {
+// document.getElementById('pdfModal').style.display = 'block';
+// });
 
-document.getElementById('closePdfBtn').addEventListener('click', () => {
-  document.getElementById('pdfModal').style.display = 'none';
-});
+// document.getElementById('closePdfBtn').addEventListener('click', () => {
+// document.getElementById('pdfModal').style.display = 'none';
+// }); 
     
 document.getElementById("rangeSelect").addEventListener("change", e => {
   const [a, b] = e.target.value.split("-").map(Number);
@@ -460,6 +460,7 @@ themeSelect.addEventListener("change", () => {
   
 </body>
 </html>
+
 
 
 
