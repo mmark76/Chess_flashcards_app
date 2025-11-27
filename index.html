@@ -399,20 +399,6 @@ document.getElementById("jumpBtn").onclick = () => {
   }
 };
 
-document.getElementById("rangeSelect").onchange = (e) => {
-  const v = e.target.value;
-  if (!v) return;
-  const arr = [];
-  v.split(",").forEach(s => {
-    if (s.includes("-")) {
-      let [a, b] = s.split("-").map(Number);
-      for (let x = a; x <= b; x++) arr.push(x);
-    } else arr.push(Number(s));
-  });
-  currentIndex = arr[Math.floor(Math.random() * arr.length)] - 1;
-  showCard(currentIndex);
-};
-
 document.getElementById("openFenBuilderBtn").onclick = () => {
   window.open("https://lichess.org/editor", "_blank");
 };
@@ -472,6 +458,7 @@ uploadInput.addEventListener("change", (event) => {
 </div>
 </body>
 </html>
+
 
 
 
