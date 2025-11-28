@@ -244,7 +244,7 @@
   <div style="text-align:center; font-size:0.9em; margin-bottom:15px;">
     <img src="/data/screenshot.png"
       style="width:55%; max-width:230px; font-size:0.85em; display:block; margin:0 auto 8px;">
-    Source of 15 default tactical positions: <em>Sharpen Your Tactics!</em><br>
+    Source of 15 demo (default) tactical positions: <em>Sharpen Your Tactics!</em><br>
     by Grandmasters Anatoly Lein & Boris Archangelsky
   </div>
 
@@ -285,7 +285,7 @@
         <div>(Upload only images and screenshots)</div>
         <div style="font-size:0.85em; font-weight:500; color:green; margin-top:4px;">
           The images you upload are temporary. They are lost on refresh.<br>
-          Once you click the refresh button, the default (15) images are loaded again.
+          Once you click the refresh button, the demo (default) 15 images are loaded again.
         </div>
       </div>
 
@@ -300,7 +300,7 @@
 let TOTAL = 15;
 
 const statusMsg = document.getElementById("statusMsg");
-statusMsg.textContent = "Default 15 images were loaded...";
+statusMsg.textContent = "Demo (default) 15 images were loaded...";
 statusMsg.style.color = "green";
 
 const cards = [];
@@ -449,6 +449,7 @@ uploadInput.addEventListener("change", (event) => {
   
 </body>
 </html>
+
 
 
 
