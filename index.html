@@ -285,6 +285,7 @@
   <!-- TOP BUTTONS -->
   <div id="top-center-buttons">
     <button id="openFenBuilderBtn">Use lichess.org FEN Builder</button>
+    <button id="feedbackBtn" type="button">Feedback</button>
 
     <select id="themeSelect">
       <option value="light">Light background</option>
@@ -439,6 +440,10 @@ document.getElementById("jumpBtn").onclick = () => {
 
 document.getElementById("openFenBuilderBtn").onclick = () => {
   window.open("https://lichess.org/editor", "_blank");
+};
+
+document.getElementById("feedbackBtn").onclick = () => {
+  window.location.href = "mailto:markellos.markides@gmail.com?subject=Chess%20Positions%20Flashcards%20Feedback";
 };
 
 /* ========================================
