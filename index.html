@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://stats.chessmnemonics.net/js/pa-E8V9TxZlug_XLJ7oEwlSz.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LQXG4SHDRX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LQXG4SHDRX');
+</script>
+  
+  <meta charset="UTF-8" />
+  <title>Chess Positions Flashcards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    /* ==========================
+       GLOBAL BUTTON STYLE
+    =========================== */
+    button,
+    select,
+    input[type="file"] {
+      padding: 10px 24px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(180deg, #ffffff 0%, #e6e6e6 100%);
+      cursor: pointer;
+      font-size: 0.95em;
+      font-weight: 600;
+      transition: 0.2s;
+      border: 1px solid #ccc;
+    }
+
+    button:hover,
+    select:hover,
+    input[type="file"]:hover {
+      background: linear-gradient(180deg, #fdfdfd 0%, #dcdcdc 100%);
+      transform: translateY(-1px);
+    }
+
+    .dark-mode button,
+    .dark-mode select,
+    .dark-mode input[type="file"] {
+      background: #2b2b2b;
+      border: 1px solid #555;
+      color: #eee;
+    }
+
+    /* TOP BUTTONS CENTER */
+    #top-center-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    #topBar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    /* FLASHCARD CARD */
+    #card {
+      text-align: center;
+      border: 1px solid #ddd;
+      padding: 18px;
+      border-radius: 6px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    #boardImg {
+      width: 100%;
+      max-width: 420px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+    }
+
+    #controls {
+      margin-top: 15px;
+    }
+
+    #controls>div {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    #favoriteIndicator {
+      font-size: 1.4em;
+      margin-left: 5px;
+      color: #999;
+    }
+
+    #favoriteIndicator.active {
+      color: gold;
+    }
+
+    /* DARK MODE */
+    .dark-mode {
+      background: #141414;
+      color: #eee;
+    }
+
+    .dark-mode #card {
+      border-color: #444;
+    }
+
+    .dark-mode #boardImg {
+      border-color: #555;
+    }
+
+    .dark-mode #favoriteIndicator {
+      color: #667;
+    }
+
+    .dark-mode #favoriteIndicator.active {
+      color: gold;
+    }
+
+    /* MOBILE LAYOUT */
+    @media(max-width:600px) {
+
+      button,
+      select,
+      input[type="file"] {
+        width: 90%;
+        max-width: 260px;
+        padding: 10px 12px;
+        font-size: 0.85em;
+      }
+
+      #top-center-buttons {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      #topBar {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+      }
+
+      #controls>div {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+      }
+
+      #bottom-file input[type="file"] {
+        width: 90%;
+      }
+    }
+
+    select,
+    option {
+      text-align: center;
+      text-align-last: center;
+    }
+
+/* ==========================
+   HEADER NAVIGATION LINKS
+========================== */
+.header-links {
+  text-align: center;
+  margin: 20px 0 30px 0;
+  font-family: Arial, sans-serif;
+}
+
+.header-links a:hover {
+  background: #e4e4e4;
+  transform: translateY(-2px);
+}
+
+/* DARK MODE SUPPORT */
+.dark-mode .header-links a {
+  background: #2b2b2b;
+  color: #eee;
+  border: 1px solid #555;
+}
+
+.dark-mode .header-links a:hover {
+  background: #3a3a3a;
+}
+
+.header-links a {
+  display: inline-block;
+  padding: 10px 22px;
+  margin: 10px auto;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  background: #f0f0f0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: 0.25s;
+}
+
+/* BIG OUTER CONTAINER */
+#big-container {
+  max-width: 470px;
+  margin: 0 auto;
+  padding: 20px 30px;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  background: #fafafa;
+}
+
+/* Dark mode */
+.dark-mode #big-container {
+  background: #1b1b1b;
+  border-color: #555;
+}
+
+/* ========= FOOTER ============ */ 
+    footer { 
+      background: #222; 
+      padding: 7px; 
+      color: #b3b3b3; 
+      font-size: 0.7em; 
+      position: fixed; 
+      bottom: 0; 
+      left: 0; 
+      width: 100%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 12px; 
+      text-align: center; 
+    }
+    
+</style>
+
+</head>
+
+<body>
+  <a href="https://markellosecosystem.com/" style="display:block; width:fit-content; max-width:calc(100% - 32px); margin:0 auto 10px; padding:5px 10px; box-sizing:border-box; border:1px solid rgba(148,163,184,0.10); border-radius:8px; background:rgba(148,163,184,0.035); color:inherit; text-decoration:none; font-size:0.78rem; line-height:1.3; text-align:center; overflow-wrap:anywhere;">← Back to Markellos Ecosystem</a>
+<div id="big-container">
+  <h1>Chess Positions Flashcards</h1>
+
+  <div id="statusMsg" style="text-align:center; font-weight:500; margin-bottom:12px; color:green;"></div>
+    
+  <div style="text-align:center; font-size:0.75em; margin-top:5px; margin-bottom:15px;">
+    Source of 15 demo (default) tactical positions: <em>Sharpen Your Tactics!</em>
+    <br>by Grandmasters Anatoly Lein & Boris Archangelsky
+  </div>
+  
+  <div style="text-align:center; font-size:0.75em; margin-top:10px; margin-bottom:10px;">
+    <img src="/data/screenshot.png"
+      style="width:90%; max-width:500px; font-size:0.85em; display:block; margin:0 auto 8px;">
+    Photo by <a href="https://unsplash.com/@hpzworkz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" style="color:green;">Hassan Pasha</a> 
+    on <a href="https://unsplash.com/photos/white-ceramic-figurine-on-black-table-7SjEuEF06Zw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" style="color:green;">Unsplash</a>
+  </div>
+
+  <!-- TOP BUTTONS -->
+  <div id="top-center-buttons">
+    <button id="openFenBuilderBtn">Use lichess.org FEN Builder</button>
+    <button id="feedbackBtn" type="button">Feedback</button>
+
+    <select id="themeSelect">
+      <option value="light">Light background</option>
+      <option value="dark">Dark background</option>
+    </select>
+  </div>
+
+  <!-- MODE / DIFFICULTY -->
+  <div id="topBar">
+    <button id="modeBtn">Mode: Random</button>
+    <button id="jumpBtn">Go to number #</button>
+  </div>
+
+  <div id="card">
+
+    <div id="problemCounter"
+      style="margin-bottom:8px; font-weight:700; font-size:1.1em; color:#0a7c24;"></div>
+
+    <img id="boardImg" alt="Chess position diagram">
+
+    <div id="controls">
+
+      <div>
+        <button id="previous-btn">← Previous</button>
+        <button id="next-btn">Next →</button>
+        <button id="favorite-btn">★ Favorite</button>
+        <span id="favoriteIndicator">☆</span>
+      </div>
+
+      <div id="bottom-file">
+        <input type="file" id="upload" multiple accept="image/*">
+        <div>(Upload only images and screenshots)</div>
+        <div style="font-size:0.85em; font-weight:500; color:green; margin-top:4px;">
+          The images you upload are temporary. They are lost on refresh.<br>
+          Once you click the refresh button, the demo (default) 15 images are loaded again.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer> 
+    <h4>© 2025-2026 Markellos Markides. All rights reserved.</h4>
+
+    <a class="copyrighted-badge" title="Copyrighted.com Registered &amp; Protected" target="_blank" href="https://app.copyrighted.com/work/5bv349ftbO2oUDZX/">
+      <img alt="Copyrighted.com Registered &amp; Protected" border="0" width="125" height="25" srcset="https://static.copyrighted.com/badges/125x25/03_2_2x.png 2x" src="https://static.copyrighted.com/badges/125x25/03_2.png"></a>
+    <script src="https://static.copyrighted.com/badges/helper.js"></script>
+  </footer>
+  
+<script>
+/* ===============================
+   ALWAYS LOAD 15 DEFAULTS
+================================ */
+let TOTAL = 15;
+
+const statusMsg = document.getElementById("statusMsg");
+statusMsg.textContent = "Demo (default) 15 images were loaded...";
+statusMsg.style.color = "green";
+
+const cards = [];
+for (let i = 1; i <= TOTAL; i++) {
+  cards.push({
+    id: i,
+    image: `problems/problem_${i}.png`,
+    favorite: false
+  });
+}
+
+const boardImg = document.getElementById("boardImg");
+const favoriteIndicator = document.getElementById("favoriteIndicator");
+const modeBtn = document.getElementById("modeBtn");
+const uploadInput = document.getElementById("upload");
+
+/* Theme select */
+const themeSelect = document.getElementById("themeSelect");
+
+/* AUTO-DETECT SYSTEM THEME */
+if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+  document.body.classList.add("dark-mode");
+  themeSelect.value = "dark";
+} else {
+  themeSelect.value = "light";
+}
+
+/* USER MANUAL THEME CHANGE */
+themeSelect.onchange = () => {
+  if (themeSelect.value === "dark") document.body.classList.add("dark-mode");
+  else document.body.classList.remove("dark-mode");
+};
+
+let currentIndex = 0;
+let mode = "Sequential";
+let defaultsRemoved = false;
+
+function updateModeButton() {
+  modeBtn.textContent = (mode === "random") ? "Mode: Random" : "Mode: Sequential";
+}
+
+function showCard(i) {
+  const c = cards[i];
+  boardImg.src = c.image;
+  document.getElementById("problemCounter").textContent =
+    "Problem " + (i + 1) + " of " + cards.length;
+  favoriteIndicator.textContent = c.favorite ? "★" : "☆";
+  favoriteIndicator.classList.toggle("active", c.favorite);
+}
+
+updateModeButton();
+showCard(currentIndex);
+
+/* NAVIGATION BUTTONS */
+modeBtn.onclick = () => {
+  mode = (mode === "random") ? "sequential" : "random";
+  updateModeButton();
+};
+
+function getRandomDifferentIndex() {
+  if (cards.length <= 1) return currentIndex;
+  let newIndex = currentIndex;
+  while (newIndex === currentIndex)
+    newIndex = Math.floor(Math.random() * cards.length);
+  return newIndex;
+}
+
+document.getElementById("next-btn").onclick = () => {
+  currentIndex = (mode === "random")
+    ? getRandomDifferentIndex()
+    : (currentIndex + 1) % cards.length;
+  showCard(currentIndex);
+};
+
+document.getElementById("previous-btn").onclick = () => {
+  currentIndex = (mode === "random")
+    ? getRandomDifferentIndex()
+    : (currentIndex - 1 + cards.length) % cards.length;
+  showCard(currentIndex);
+};
+
+document.getElementById("favorite-btn").onclick = () => {
+  cards[currentIndex].favorite = !cards[currentIndex].favorite;
+  showCard(currentIndex);
+};
+
+document.getElementById("jumpBtn").onclick = () => {
+  const v = parseInt(prompt("Enter number (1-" + cards.length + ")"));
+  if (v >= 1 && v <= cards.length) {
+    currentIndex = v - 1;
+    showCard(currentIndex);
+  }
+};
+
+document.getElementById("openFenBuilderBtn").onclick = () => {
+  window.open("https://lichess.org/editor", "_blank");
+};
+
+document.getElementById("feedbackBtn").onclick = () => {
+  window.location.href = "mailto:markellos.markides@gmail.com?subject=Chess%20Positions%20Flashcards%20Feedback";
+};
+
+/* ========================================
+   UPLOAD HANDLER (Prompt → folder opens)
+========================================= */
+/* Μετά την επιλογή αρχείων → φορτώνει uploaded */
+uploadInput.addEventListener("change", (event) => {
+
+  const files = Array.from(event.target.files || []).filter(f =>
+    f.type.startsWith("image/")
+  );
+
+  if (!files.length) {
+    statusMsg.textContent = "No image files selected.";
+    statusMsg.style.color = "red";
+    return;
+  }
+
+  // ΜΟΝΟ στο πρώτο upload σβήνουμε τα 15 default
+  if (!defaultsRemoved) {
+    cards.length = 0;       // καθαρίζει τα default προβλήματα
+    defaultsRemoved = true;
+  }
+
+  const startIndex = cards.length;
+
+  files.forEach(file => {
+    const url = URL.createObjectURL(file);
+    cards.push({
+      id: cards.length + 1,
+      image: url,
+      favorite: false
+    });
+  });
+
+  statusMsg.style.color = "green";
+  statusMsg.textContent =
+    files.length === 1
+      ? "1 uploaded image added."
+      : files.length + " uploaded images added.";
+
+  // Πάμε στην πρώτη από τις νέες εικόνες
+  currentIndex = startIndex;
+  showCard(currentIndex);
+});
+
+</script>
+  
+</div>
+  
+</body>
+</html>
