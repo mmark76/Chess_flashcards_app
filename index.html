@@ -273,7 +273,31 @@
 <body>
   <a href="https://markellosecosystem.com/" style="display:block; width:fit-content; max-width:calc(100% - 32px); margin:0 auto 10px; padding:5px 10px; box-sizing:border-box; border:1px solid rgba(148,163,184,0.10); border-radius:8px; background:rgba(148,163,184,0.035); color:inherit; text-decoration:none; font-size:0.78rem; line-height:1.3; text-align:center; overflow-wrap:anywhere;">← Back to Markellos Ecosystem</a>
 <div id="big-container">
-  <aside id="analytics-notice" class="analytics-notice" role="status" aria-live="polite"><button type="button" aria-label="Close analytics notice" onclick="document.getElementById('analytics-notice').hidden=true">Close</button><strong>Cookie-less analytics.</strong> This site does not use cookies for analytics. It records only aggregate visits by hour, domain and country to help the administrator understand traffic; it is not used for any other purpose.</aside>
+  <aside id="analytics-notice" class="analytics-notice" role="status" aria-live="polite" hidden><button id="analytics-notice-close" type="button" aria-label="Close analytics notice">Close</button><strong>Cookie-less analytics.</strong> This site does not use cookies for analytics. It records only aggregate visits by hour, domain and country to help the administrator understand traffic; it is not used for any other purpose.</aside>
+  <script id="analytics-notice-persistence">
+    (() => {
+      'use strict';
+
+      const storageKey = 'chess-flashcards.analytics-notice-dismissed.v1';
+      const notice = document.getElementById('analytics-notice');
+      const closeButton = document.getElementById('analytics-notice-close');
+
+      try {
+        notice.hidden = localStorage.getItem(storageKey) === '1';
+      } catch {
+        notice.hidden = false;
+      }
+
+      closeButton.addEventListener('click', () => {
+        notice.hidden = true;
+        try {
+          localStorage.setItem(storageKey, '1');
+        } catch {
+          // Closing still works when browser storage is unavailable.
+        }
+      });
+    })();
+  </script>
   <h1>Chess Positions Flashcards</h1>
 
   <div id="statusMsg" style="text-align:center; font-weight:500; margin-bottom:12px; color:green;"></div>
